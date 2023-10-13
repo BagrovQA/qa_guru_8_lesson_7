@@ -25,19 +25,19 @@ def test_txt_in_zip():
 
 
 def test_pdf_file_in_zip():
-    reader = PdfReader(os.path.join(RESOURCES_PATH, "file_test_1.pdf"))
-    size_of_pdf = os.path.getsize(os.path.join(RESOURCES_PATH, "file_test_1.pdf"))
+    reader = PdfReader(os.path.join(RESOURCES_PATH, "Python Testing with Pytest (Brian Okken).pdf"))
+    size_of_pdf = os.path.getsize(os.path.join(RESOURCES_PATH, "Python Testing with Pytest (Brian Okken).pdf"))
     number_of_pages = len(reader.pages)
     first_page = reader.pages[1]
-    last_page = reader.pages[15]
+    last_page = reader.pages[240]
     text_first_page = first_page.extract_text()
     text_last_page = last_page.extract_text()
 
     with zipfile.ZipFile(os.path.join(TMP_PATH, 'test.zip')) as pdf_z:
-        assert size_of_pdf == pdf_z.getinfo("file_test_1.pdf").file_size
-        assert number_of_pages == len(PdfReader(pdf_z.open("file_test_1.pdf")).pages)
-        assert text_first_page == PdfReader(pdf_z.open("file_test_1.pdf")).pages[1].extract_text()
-        assert text_last_page == PdfReader(pdf_z.open("file_test_1.pdf")).pages[240].extract_text()
+        assert size_of_pdf == pdf_z.getinfo("Python Testing with Pytest (Brian Okken).pdf").file_size
+        assert number_of_pages == len(PdfReader(pdf_z.open("Python Testing with Pytest (Brian Okken).pdf")).pages)
+        assert text_first_page == PdfReader(pdf_z.open("Python Testing with Pytest (Brian Okken).pdf")).pages[1].extract_text()
+        assert text_last_page == PdfReader(pdf_z.open("Python Testing with Pytest (Brian Okken).pdf")).pages[240].extract_text()
 
 
 def test_xls_in_zip():
