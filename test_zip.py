@@ -29,7 +29,7 @@ def test_pdf_file_in_zip():
     size_of_pdf = os.path.getsize(os.path.join(RESOURCES_PATH, "file_test_1.pdf"))
     number_of_pages = len(reader.pages)
     first_page = reader.pages[1]
-    last_page = reader.pages[240]
+    last_page = reader.pages[15]
     text_first_page = first_page.extract_text()
     text_last_page = last_page.extract_text()
 
